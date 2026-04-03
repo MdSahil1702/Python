@@ -1,9 +1,11 @@
 #seat reservation system for concert venue
 import numpy as np
-main_floor=np.ones((10,15))
+main_floor=np.zeros((10,15))
 
 
-balcony=np.ones((8,12))
+balcony=np.zeros((8,12))
 
 
-vip = np.ones((4,6))
+vip = np.zero((4,6))
+
+
