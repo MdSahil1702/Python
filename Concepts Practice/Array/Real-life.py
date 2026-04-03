@@ -1,16 +1,16 @@
 from array import *
 import sys
 
-current_index=-1;
+current_index=-1
 
-max_index=7*1440;
+max_index=7*1440
 
 
 def addReading(temperatureData,data):
     global current_index, max_index
     if current_index==max_index:
-        front=1;
-        back=0;
+        front=1
+        back=0
         temperatureData.pop(0)
         while(front!=max_index+1):
             temperatureData[back]=temperatureData[front]
@@ -49,7 +49,7 @@ def findMinMax(temperatureData):
     return min,max
 
 def flagDetect(temperatureData):
-    temp=0;
+    temp=0
     for i in range (current_index-60,current_index+1):
         temp+=temperatureData[i]
 

@@ -77,4 +77,4 @@ new_ar5=array('i',[1,2,3,4,5,6])
 try:
     new_ar5.append("hello")
 except TypeError as e:
-    print("Madherchod kya daal rha hai")
+    print("wrong input")
