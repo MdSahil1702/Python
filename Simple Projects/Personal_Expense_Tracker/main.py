@@ -1,6 +1,6 @@
 
 from datetime import datetime
-
+import json
 # import os
 
 # import datetime
@@ -68,26 +68,49 @@ def validate_date(a):
         return valid_date
     except ValueError:
         print("Invalid date format! Please enter i YYYY-MM-DD format.")
-            
+def saveToFile(new_expense):
+    json_data=json.dumps(new_expense)
+    
+    f=open("expenses.json",'w')
+    f.write(json_data)
+    
+    f.close()
+    
 def add_expenses():
     new_expense={}
     
     
     a=input("Enter date (YYYY-MM-DD) or press Enter for today:")
     a=validate_date(a)
-    new_expense["date"]=a
+    new_expense["date"]=a.strftime("%Y-%m-%d")
     # print(new_expense["date"].strftime("%Y-%m-%d"))
     
     
     
     a=input("Select category (Food/Transport/Shopping/Bills/Other): ")
-    a.title()
+    a=a.title()
     if(a=="Food" or a=="Transport"or a=="Shopping"or a=="Bills"or a=="Other"):
      new_expense["category"]=a
     else:
      print("Invalid category")
     
-    a=int(input("Enter amount (in $): "))
+    a=float(input("Enter amount (in $): "))
+    
+        
+    if(not(a.is_integer())):
+        print("Invalid Amount!")
+    elif(a<0):
+        print("Amount cannot be negative!")
+    else:
+        new_expense["amount"]=a
+
+    a=input("Enter description(optional):")
+    if(a==""):
+        new_expense["description"]="No description"
+    else:
+        new_expense["desctiption"]=a
+
+    saveToFile(new_expense)    
     
     
             
