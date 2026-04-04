@@ -1,7 +1,7 @@
 
 from datetime import datetime
 import json
-# import os
+import os
 
 # import datetime
 # class Expenses:
@@ -58,7 +58,8 @@ import json
 #         if os.path.exists("expenses_data.txt"):
 #             f=open("expenses_data.txt",'r')
 #             Expense=f.read()
-        
+id=100
+
 def validate_date(a):
     if(a==""):
         today=datetime.today().date()
@@ -69,12 +70,16 @@ def validate_date(a):
     except ValueError:
         print("Invalid date format! Please enter i YYYY-MM-DD format.")
 def saveToFile(new_expense):
+    global id
+    id=id+1
+    new_expense["id"]=id
     json_data=json.dumps(new_expense)
     
-    f=open("expenses.json",'w')
-    f.write(json_data)
+    f=open("expenses.json",'a')
+    f.write(json_data+"\n")
     
     f.close()
+    print(f"Expenses added successfully!(ID:{new_expense["id"]} )")
     
 def add_expenses():
     new_expense={}
@@ -111,8 +116,29 @@ def add_expenses():
         new_expense["desctiption"]=a
 
     saveToFile(new_expense)    
+
+def get_expenses_fromfile(saved_expenses):
+    f=open("expenses.json",'r')
+    for i in f:
+        saved_expenses.append(json.loads(i))
+    f.close()
     
     
+    
+    
+def view_Expenses():
+    if(os.path.exists("expenses.json")):
+        print("ID   Date    Category    Amount  Description")
+        saved_expenses=[]
+        get_expenses_fromfile(saved_expenses)
+        
+        for e in saved_expenses:
+            print(f"{e['id']}   {e['date']}   {e['category']}   {e['amount']}   {e['description']}")
+    else:
+        print("No expenses added yet!")
+        
+    
+        
             
 def main():
     
@@ -144,10 +170,9 @@ def main():
             
                 
             case 2:
-                # if(obj != None):
-                #     obj.view_Expenses()
-                # else:
-                #     print("error")
+                
+                view_Expenses()
+                
                 return
                     
             case 7:
