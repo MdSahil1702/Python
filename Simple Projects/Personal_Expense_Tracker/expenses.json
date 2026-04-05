@@ -1,0 +1,23 @@
+[
+    {
+        "date": "2026-04-05",
+        "category": "Food",
+        "amount": 400.0,
+        "description": "No description",
+        "id": 1
+    },
+    {
+        "date": "2026-04-05",
+        "category": "Bills",
+        "amount": 300.0,
+        "description": "second",
+        "id": 1
+    },
+    {
+        "date": "2026-04-05",
+        "category": "Shopping",
+        "amount": 6000.0,
+        "description": "third",
+        "id": 1
+    }
+]
