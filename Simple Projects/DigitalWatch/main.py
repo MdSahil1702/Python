@@ -12,6 +12,43 @@ def showTimer():
         time.sleep(1)
     return 
 
+def setTime():
+    hr=int(input("Enter the hour(0-24)"))
+    if hr>24 or hr<0:
+        print("Wrong input")
+        return
+    
+    min=int(input("Enter the minute"))
+    if min>60 or min<0:
+        print("Wrong input")
+        return
+    
+    sec=0
+    while True:
+
+        os.system('cls')  
+       
+
+        print(f"{hr:02d}:{min:02d}:{sec:02d}")
+        time.sleep(1)
+        sec += 1
+
+        if sec == 60:
+            sec = 0
+            min += 1
+
+        if min == 60:
+            min = 0
+            hr += 1
+
+        if hr == 24:
+            hr = 0
+    
+        
+                
+        
+            
+    
 
 while 1:
     print("1. Show Time\n"
