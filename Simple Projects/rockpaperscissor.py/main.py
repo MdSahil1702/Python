@@ -25,15 +25,22 @@ def win_loss(user,computer):
 
 print("===========WELCOME TO ROCK PAPER SCISSOR GAME===========")
 
-def run():
-    user_select= int(input("Select\n 1.Rock\n 2.Paper\n 3.Scissor\n 4.Exit\n"))
-    user=converToString(user_select)
-    computer_select= random.choice(["rock","paper","scissor"])
-    win_loss(user,computer_select)
 
-while 1:
-    run()
 
+   
+    
     
 
-
+while 1:
+    
+    try:
+        user_select= int(input("Select\n 1.Rock\n 2.Paper\n 3.Scissor\n 4.Exit\n"))
+        if user_select==4:
+            print("Exiting from the game\n")
+            break
+        user=converToString(user_select)
+        computer_select= random.choice(["rock","paper","scissor"])
+        win_loss(user,computer_select)
+    
+    except ValueError:
+        print("You have entered an invalid number please enter the number between 1-4")
