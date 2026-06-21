@@ -16,6 +16,29 @@ print(a.ndim)
 
 import matplotlib.pyplot as plt
 
+#3
+
+import sys
+a= np.arange(1000)
+b=list(range(1000))
+
+print("size of 1000 element array numpy", a.nbytes)
+print("size of 1000 element list", sys.getsizeof(b))
+
+
+#4
+a=np.arange(12).reshape(3,4)
+a=a.reshape(2,6)
+print(a)
+
+#5
+a= np.identity(5,int)
+print(a.diagonal())
+
+
+
+
+
 #advance 
 #1
 x= np.linspace(0,10,20)
@@ -36,4 +59,4 @@ plt.ylabel("y")
 plt.title("Sine and Cosine Curves")
 plt.legend()
 plt.grid(True)
-plt.show()
+# plt.show()
